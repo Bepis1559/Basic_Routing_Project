@@ -5,7 +5,6 @@ import { Outlet, ScrollRestoration, useNavigation } from "react-router-dom";
 
 export function App(): ReactElement {
   const { state } = useNavigation();
-
   return (
     <>
       <ScrollRestoration />

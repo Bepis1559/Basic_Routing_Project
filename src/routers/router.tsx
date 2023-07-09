@@ -10,13 +10,13 @@ import { App } from "../App";
 import urlEndPoints from "../json/urlEndPoints.json";
 import { Posts } from "../pages/Posts";
 import { createRouterObject } from "./routerObjects";
-const localServerUrl = "http://127.0.0.1:3000";
+const baseUrl = import.meta.env.VITE_API_URL;
 const { usersEndPoint, postsEndPoint, commentsEndPoint, todosEndPoint } =
   urlEndPoints;
-const usersURL = `${localServerUrl}${usersEndPoint}`;
-const postsUrl = `${localServerUrl}${postsEndPoint}`;
-const commentsUrl = `${localServerUrl}${commentsEndPoint}`;
-const todosUrl = `${localServerUrl}${todosEndPoint}`;
+const usersURL = `${baseUrl}${usersEndPoint}`;
+const postsUrl = `${baseUrl}${postsEndPoint}`;
+const commentsUrl = `${baseUrl}${commentsEndPoint}`;
+const todosUrl = `${baseUrl}${todosEndPoint}`;
 
 const defaultRoute = createRouterObject(
   "*",
@@ -81,12 +81,12 @@ const routes = [
   postRoute,
   todosRoute,
   postsRoute,
-  // singleUserPostsRoute,
   errorRoute,
 ];
 export const router = createBrowserRouter([
   {
     element: <App />,
     children: routes,
+    errorElement: <Error />,
   },
 ]);
